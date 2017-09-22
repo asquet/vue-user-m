@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "name": "Wasia Poupquin",
+      "birthDate": "1985-11-15",
+      "userPic": "https://avatarfiles.alphacoders.com/761/thumb-76101.png",
+      "managerId": null,
+      "positionId": 2
+    },
+    {
+      "name": "Second guy",
+      "birthDate": "1990-03-20",
+      "userPic": "",
+      "managerId": 0,
+      "positionId": "",
+      "id": 1
+    },
+    {
+      "name": "Jebediah Kerman",
+      "birthDate": "2017-03-15",
+      "userPic": "",
+      "managerId": 2,
+      "positionId": 1,
+      "id": 2
+    }
+  ],
+  "positions": [
+    {
+      "id": 0,
+      "name": "Worker",
+      "roles": [
+        0
+      ]
+    },
+    {
+      "name": "Mid-Manager",
+      "roles": [
+        2
+      ],
+      "id": 1
+    },
+    {
+      "name": "Top manager",
+      "roles": [
+        2
+      ],
+      "id": 2
+    }
+  ],
+  "roles": [
+    {
+      "id": 0,
+      "name": "Image howler"
+    },
+    {
+      "name": "Time waster",
+      "id": 2
+    }
+  ]
+}
