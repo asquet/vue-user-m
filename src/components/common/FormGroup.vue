@@ -2,7 +2,11 @@
   <div>
     <label>{{ label }}</label>
     <slot>
-      <input :value="value" v-on:input="ev => $emit('update:value', ev.target.value)"/>
+      <input
+        :value="value"
+        @input="ev => $emit('update:value', ev.target.value)"
+        :readonly="readonly"
+      />
     </slot>
   </div>
 </template>
@@ -13,6 +17,7 @@
     props: {
       value: '',
       label: '',
-    },
-  };
+      readonly: false
+    }
+  }
 </script>

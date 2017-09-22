@@ -8,14 +8,14 @@
 </template>
 
 <script>
-  import NavSidebar from './components/NavSidebar';
+  import NavSidebar from './components/NavSidebar'
 
   export default {
     name: 'app',
     components: {
-      NavSidebar,
-    },
-  };
+      NavSidebar
+    }
+  }
 </script>
 
 <style>

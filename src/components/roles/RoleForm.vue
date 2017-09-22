@@ -1,28 +1,36 @@
 <template>
   <div>
     <form @submit="onSubmit">
-      <form-group :value.sync="id" label="ID"></form-group>
-      <form-group :value.sync="name" label="Name"></form-group>
+      <form-group :value.sync="obj.id" label="ID" readonly></form-group>
+      <form-group :value.sync="obj.name" label="Name"></form-group>
       <button type="submit">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
-  import FormGroup from '@/components/common/FormGroup';
+  import FormGroup from '../common/FormGroup'
 
   export default {
     components: {
-      'form-group': FormGroup,
+      'form-group': FormGroup
     },
-    data: () => ({
-      id: 0,
-      name: '',
-    }),
+    props: {
+      entity: Object
+    },
+    data: function() {
+      return {
+        obj: {
+          id: null,
+          name: '',
+          ...this.entity
+        }
+      }
+    },
     methods: {
       onSubmit: function onSubmit() {
-        alert(`${this.id} ${this.name}`);
-      },
-    },
-  };
+        this.$emit('onSave', this.obj)
+      }
+    }
+  }
 </script>

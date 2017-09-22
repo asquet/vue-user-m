@@ -2,17 +2,18 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  //parser: 'babel-eslint',
   parserOptions: {
     sourceType: 'module'
   },
   env: {
     browser: true,
   },
-  extends: 'airbnb-base',
+  extends: ['airbnb-base', "prettier", 'plugin:vue/recommended'],
   // required to lint *.vue files
   plugins: [
-    'html'
+    'html',
+    'prettier'
   ],
   // check if imports actually resolve
   'settings': {
@@ -24,6 +25,11 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    "prettier/prettier": ["error", {
+      //"trailingComma": "all",
+      "singleQuote": true,
+      "semi": false
+    }],
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {
       'js': 'never',

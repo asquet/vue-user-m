@@ -17,10 +17,10 @@
       entries: {
         default: [],
         required: true,
-        type: Array,
-      },
-    },
-  };
+        type: Array
+      }
+    }
+  }
 </script>
 
 <style>

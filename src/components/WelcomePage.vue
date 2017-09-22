@@ -7,6 +7,6 @@
 
 <script>
   export default {
-    name: 'welcome-page',
-  };
+    name: 'welcome-page'
+  }
 </script>

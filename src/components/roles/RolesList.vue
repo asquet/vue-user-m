@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2> Roles List </h2>
+    <button @click="addNew">Add new</button>
     <entry-list entries="roles" :entries="roles">
       <tr slot="header">
         <td>ID</td>
@@ -21,21 +22,23 @@
 </template>
 
 <script>
-  import EntryList from '../common/EntryList';
+  import { mapState } from 'vuex'
+  import EntryList from '../common/EntryList'
+  import store from '../../store/store'
 
   export default {
-    data: () => ({
-      roles: [{
-        id: 1,
-        name: 'role 1',
-      }, {
-        id: 2,
-        name: 'role 2',
-      }],
+    store,
+    state: true,
+    computed: mapState({
+      roles: state => state.roles.list
     }),
     components: {
-      'entry-list': EntryList,
+      'entry-list': EntryList
     },
-  };
-
+    methods: {
+      addNew() {
+        this.$router.push({ name: 'Role Create' })
+      }
+    }
+  }
 </script>
