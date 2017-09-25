@@ -1,5 +1,5 @@
 <template>
-  <role-form :entity="{}" @onSave="onSave"></role-form>
+  <role-form :entity="{}" @onSave="onSave" @onBack="onBack"></role-form>
 </template>
 
 <script>
@@ -16,6 +16,9 @@
         this.$store
           .dispatch('roles/create', entity)
           .then(() => this.$router.push({ name: 'Roles List' }))
+      },
+      onBack() {
+        this.$router.push({ name: 'Roles List' })
       }
     }
   }

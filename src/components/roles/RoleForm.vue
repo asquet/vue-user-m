@@ -4,6 +4,7 @@
       <form-group :value.sync="obj.id" label="ID" readonly></form-group>
       <form-group :value.sync="obj.name" label="Name"></form-group>
       <button type="submit">Submit</button>
+      <button @click="$emit('onBack')">Back</button>
     </form>
   </div>
 </template>
