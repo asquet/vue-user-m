@@ -18,9 +18,9 @@
     props: {
       entity: Object
     },
-    data: function() {
-      return {
-        obj: {
+    computed: {
+      obj: function() {
+        return {
           id: null,
           name: '',
           ...this.entity

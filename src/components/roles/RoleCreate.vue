@@ -12,9 +12,10 @@
       'role-form': RoleForm
     },
     methods: {
-      onSave(data) {
-        this.$store.commit('roles/add', data)
-        this.$router.push({ name: 'Roles List' })
+      onSave(entity) {
+        this.$store
+          .dispatch('roles/create', entity)
+          .then(() => this.$router.push({ name: 'Roles List' }))
       }
     }
   }

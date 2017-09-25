@@ -2,7 +2,8 @@
   <div>
     <h2> Roles List </h2>
     <button @click="addNew">Add new</button>
-    <entry-list entries="roles" :entries="roles">
+    <div v-if="isLoading">...isLoading</div>
+    <entry-list entries="roles" :entries="roles" v-else>
       <tr slot="header">
         <td>ID</td>
         <td>Name</td>
@@ -14,6 +15,9 @@
           </td>
           <td>
             {{ props.item.name }}
+          </td>
+          <td>
+            <button @click.stop="deleteItem(props.item)"> X </button>
           </td>
         </tr>
       </template>
@@ -30,7 +34,8 @@
     store,
     state: true,
     computed: mapState({
-      roles: state => state.roles.list
+      roles: state => state.roles.list,
+      isLoading: state => state.roles.isLoading
     }),
     components: {
       'entry-list': EntryList
@@ -38,7 +43,13 @@
     methods: {
       addNew() {
         this.$router.push({ name: 'Role Create' })
+      },
+      deleteItem(item) {
+        this.$store.dispatch('roles/remove', item)
       }
+    },
+    created() {
+      this.$store.dispatch('roles/loadAll')
     }
   }
 </script>

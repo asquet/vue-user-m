@@ -1,9 +1,9 @@
 <template>
-  <role-form :entity="entity" @onSave="onSave"></role-form>
+  <role-form :entity="entity" @onSave="onSave" v-if="entity"></role-form>
 </template>
 
 <script>
-  import { mapState } from 'vuex'
+  import { mapState, mapGetters } from 'vuex'
   import RoleForm from './RoleForm'
   import store from '../../store/store'
 
@@ -12,16 +12,29 @@
     components: {
       'role-form': RoleForm
     },
-    computed: mapState({
-      entity(state) {
-        return state.roles.list.find(v => v.id == this.$route.params.role_id)
+    props: {
+      role_id: true
+    },
+    computed: {
+      entity() {
+        return this.$store.getters['roles/getById'](Number(this.role_id))
       }
-    }),
+    },
     methods: {
       onSave(entity) {
-        this.$store.commit('roles/update', entity)
-        this.$router.push({ name: 'Roles List' })
+        //        this.$store.commit('roles/update', entity)
+        this.$store
+          .dispatch('roles/update', entity)
+          .then(() => this.$router.push({ name: 'Roles List' }))
       }
+    },
+    watch: {
+      getById() {
+        console.log(1)
+      }
+    },
+    created() {
+      this.$store.dispatch('roles/loadById', this.role_id)
     }
   }
 </script>

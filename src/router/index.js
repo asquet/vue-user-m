@@ -37,7 +37,8 @@ export default new Router({
         {
           path: ':role_id',
           name: 'Role Edit',
-          component: RoleEdit
+          component: RoleEdit,
+          props: true
         }
       ]
     }
