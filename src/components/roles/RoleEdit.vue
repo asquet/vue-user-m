@@ -16,8 +16,11 @@
       role_id: true
     },
     computed: {
+      roleId() {
+        return Number(this.role_id)
+      },
       entity() {
-        return this.$store.getters['roles/getById'](Number(this.role_id))
+        return this.$store.getters['roles/getById'](this.roleId)
       }
     },
     methods: {
@@ -37,7 +40,7 @@
       }
     },
     created() {
-      this.$store.dispatch('roles/loadById', this.role_id)
+      this.$store.dispatch('roles/loadById', this.roleId)
     }
   }
 </script>
