@@ -15,10 +15,10 @@
       onSave(entity) {
         this.$store
           .dispatch('roles/create', entity)
-          .then(() => this.$router.push({ name: 'Roles List' }))
+          .then(() => this.$router.push({ name: 'Role List' }))
       },
       onBack() {
-        this.$router.push({ name: 'Roles List' })
+        this.$router.push({ name: 'Role List' })
       }
     }
   }

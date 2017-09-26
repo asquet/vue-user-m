@@ -4,6 +4,7 @@
     <ul>
       <li><router-link to="/welcome">Welcome Page</router-link></li>
       <li><router-link to="/roles/">Roles list</router-link></li>
+      <li><router-link to="/positions/">Positions list</router-link></li>
     </ul>
   </div>
 </template>

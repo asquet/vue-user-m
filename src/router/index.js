@@ -5,8 +5,34 @@ import WelcomePage from '@/components/WelcomePage'
 import RolesList from '@/components/roles/RolesList'
 import RoleCreate from '@/components/roles/RoleCreate'
 import RoleEdit from '@/components/roles/RoleEdit'
+import PositionList from '@/components/positions/PositionList'
+import PositionCreate from '@/components/positions/PositionCreate'
+import PositionEdit from '@/components/positions/PositionEdit'
 
 Vue.use(Router)
+
+const crudBlock = ({ name, ListCmp, CreateCmp, EditCmp }) => ({
+  path: `/${name.toLowerCase()}s`,
+  component: { template: '<router-view></router-view>' },
+  children: [
+    {
+      path: '',
+      name: `${name} List`,
+      component: ListCmp
+    },
+    {
+      path: 'new',
+      name: `${name} Create`,
+      component: CreateCmp
+    },
+    {
+      path: ':id',
+      name: `${name} Edit`,
+      component: EditCmp,
+      props: true
+    }
+  ]
+})
 
 export default new Router({
   routes: [
@@ -20,27 +46,17 @@ export default new Router({
       name: 'Welcome Page',
       component: WelcomePage
     },
-    {
-      path: '/roles',
-      component: { template: '<router-view></router-view>' },
-      children: [
-        {
-          path: '',
-          name: 'Roles List',
-          component: RolesList
-        },
-        {
-          path: 'new',
-          name: 'Role Create',
-          component: RoleCreate
-        },
-        {
-          path: ':role_id',
-          name: 'Role Edit',
-          component: RoleEdit,
-          props: true
-        }
-      ]
-    }
+    crudBlock({
+      name: 'Role',
+      CreateCmp: RoleCreate,
+      EditCmp: RoleEdit,
+      ListCmp: RolesList
+    }),
+    crudBlock({
+      name: 'Position',
+      CreateCmp: PositionCreate,
+      EditCmp: PositionEdit,
+      ListCmp: PositionList
+    })
   ]
 })

@@ -13,11 +13,11 @@
       'role-form': RoleForm
     },
     props: {
-      role_id: true
+      id: true
     },
     computed: {
       roleId() {
-        return Number(this.role_id)
+        return Number(this.id)
       },
       entity() {
         return this.$store.getters['roles/getById'](this.roleId)
@@ -28,10 +28,10 @@
         //        this.$store.commit('roles/update', entity)
         this.$store
           .dispatch('roles/update', entity)
-          .then(() => this.$router.push({ name: 'Roles List' }))
+          .then(() => this.$router.push({ name: 'Role List' }))
       },
       onBack() {
-        this.$router.push({ name: 'Roles List' })
+        this.$router.push({ name: 'Role List' })
       }
     },
     watch: {

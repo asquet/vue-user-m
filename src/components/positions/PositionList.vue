@@ -1,15 +1,15 @@
 <template>
   <div>
-    <h2> Roles List </h2>
+    <h2> Position List </h2>
     <button @click="addNew">Add new</button>
     <div v-if="isLoading">...isLoading</div>
-    <entry-list :entries="roles" v-else>
+    <entry-list :entries="positions" v-else>
       <tr slot="header">
         <td>ID</td>
         <td>Name</td>
       </tr>
       <template slot="item" scope="props">
-        <tr @click="$router.push({name: 'Role Edit', params: {id: props.item.id} })">
+        <tr @click="$router.push({name: 'Position Edit', params: {id: props.item.id} })">
           <td>
             {{ props.item.id }}
           </td>
@@ -34,22 +34,22 @@
     store,
     state: true,
     computed: mapState({
-      roles: state => state.roles.list,
-      isLoading: state => state.roles.isLoading
+      positions: state => state.positions.list,
+      isLoading: state => state.positions.isLoading
     }),
     components: {
       'entry-list': EntryList
     },
     methods: {
       addNew() {
-        this.$router.push({ name: 'Role Create' })
+        this.$router.push({ name: 'Position Create' })
       },
       deleteItem(item) {
-        this.$store.dispatch('roles/remove', item)
+        this.$store.dispatch('positions/remove', item)
       }
     },
     created() {
-      this.$store.dispatch('roles/loadAll')
+      this.$store.dispatch('positions/loadAll')
     }
   }
 </script>
