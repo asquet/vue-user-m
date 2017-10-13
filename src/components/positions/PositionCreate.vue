@@ -1,8 +1,9 @@
 <template>
-  <position-form :entity="{}" @onSave="onSave" @onBack="onBack"></position-form>
+  <position-form :entity="{}" :roles="roles" @onSave="onSave" @onBack="onBack"></position-form>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
   import PositionForm from './PositionForm'
   import store from '../../store/store'
 
@@ -20,6 +21,16 @@
       onBack() {
         this.$router.push({ name: 'Position List' })
       }
+    },
+    computed: {
+      ...mapState({
+        roles: state => {
+          return state.roles.list || []
+        }
+      })
+    },
+    created() {
+      this.$store.dispatch('roles/loadAll')
     }
   }
 </script>

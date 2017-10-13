@@ -33,11 +33,18 @@
       "id": 1
     },
     {
+      "id": 2,
       "name": "Top manager",
       "roles": [
         2
-      ],
-      "id": 2
+      ]
+    },
+    {
+      "id": 3,
+      "name": "wesrt",
+      "roles": [
+        0
+      ]
     }
   ],
   "roles": [

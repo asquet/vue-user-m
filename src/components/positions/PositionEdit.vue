@@ -1,5 +1,5 @@
 <template>
-  <position-form :entity="entity" @onSave="onSave" @onBack="onBack" v-if="entity"></position-form>
+  <position-form :entity="entity" :roles="roles" @onSave="onSave" @onBack="onBack" v-if="entity"></position-form>
 </template>
 
 <script>
@@ -21,7 +21,12 @@
       },
       entity() {
         return this.$store.getters['positions/getById'](this.positionId)
-      }
+      },
+      ...mapState({
+        roles: state => {
+          return state.roles.list || []
+        }
+      })
     },
     methods: {
       onSave(entity) {
@@ -33,13 +38,9 @@
         this.$router.push({ name: 'Position List' })
       }
     },
-    watch: {
-      getById() {
-        console.log(1)
-      }
-    },
     created() {
       this.$store.dispatch('positions/loadById', this.positionId)
+      this.$store.dispatch('roles/loadAll')
     }
   }
 </script>
